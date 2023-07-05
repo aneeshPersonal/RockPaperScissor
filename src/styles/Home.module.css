@@ -1,12 +1,10 @@
 .main {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   align-items: center;
   padding: 6rem;
   min-height: 100vh;
 }
-
 
 .computerChoice {
   display: flex;
@@ -34,7 +32,7 @@
 }
 .playButton:hover {
   box-shadow: 0 0 5px #ff1867, 0 0 10px #ff1867, 0 0 30px #ff1867;
-  transition: all .2s ease-out;
+  transition: all 0.2s ease-out;
 }
 .mainTitles {
   display: flex;
@@ -42,6 +40,9 @@
   gap: 20px;
   width: 300px;
   text-transform: uppercase;
+  @media (max-width: 700px) {
+    margin-top: 50px;
+  }
 }
 .mainTitles h3 {
   display: flex;
@@ -50,7 +51,8 @@
   font-size: 12px;
   height: 30px;
 }
-.computerGreen, .userPink {
+.computerGreen,
+.userPink {
   text-transform: uppercase;
   font-size: 14px;
 }
@@ -58,7 +60,7 @@
   color: aqua;
 }
 .userPink {
-  color:yellow;
+  color: yellow;
 }
 .pointBoardWrap {
   position: fixed;
@@ -84,136 +86,40 @@
   animation: horizontal-shaking 0.15s ease-in;
 }
 
+.zoomInOutBox {
+  color: #31fe34;
+  animation: zoom-in-zoom-out 1s ease infinite;
+  @media (max-width: 700px) {
+    font-size: 15px;
+  }
+}
+
 @keyframes horizontal-shaking {
-  0% { transform: translateX(0) }
-  25% { transform: translateX(5px) }
-  50% { transform: translateX(-5px) }
-  75% { transform: translateX(5px) }
-  100% { transform: translateX(0) }
- }
-
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  .card:hover {
-    background: rgba(var(--card-rgb), 0.1);
-    border: 1px solid rgba(var(--card-border-rgb), 0.15);
+  0% {
+    transform: translateX(0);
   }
-
-  .card:hover span {
-    transform: translateX(4px);
+  25% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
 
-@media (prefers-reduced-motion) {
-  .thirteen::before {
-    animation: none;
+@keyframes zoom-in-zoom-out {
+  0% {
+    transform: scale(1, 1);
   }
-
-  .card:hover span {
-    transform: none;
+  50% {
+    transform: scale(1.2, 1.2);
   }
-}
-
-/* Mobile */
-@media (max-width: 700px) {
-  .content {
-    padding: 4rem;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-    margin-bottom: 120px;
-    max-width: 320px;
-    text-align: center;
-  }
-
-  .card {
-    padding: 1rem 2.5rem;
-  }
-
-  .card h2 {
-    margin-bottom: 0.5rem;
-  }
-
-  .center {
-    padding: 8rem 0 6rem;
-  }
-
-  .center::before {
-    transform: none;
-    height: 300px;
-  }
-
-  .description {
-    font-size: 0.8rem;
-  }
-
-  .description a {
-    padding: 1rem;
-  }
-
-  .description p,
-  .description div {
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    width: 100%;
-  }
-
-  .description p {
-    align-items: center;
-    inset: 0 0 auto;
-    padding: 2rem 1rem 1.4rem;
-    border-radius: 0;
-    border: none;
-    border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.25);
-    background: linear-gradient(
-      to bottom,
-      rgba(var(--background-start-rgb), 1),
-      rgba(var(--callout-rgb), 0.5)
-    );
-    background-clip: padding-box;
-    backdrop-filter: blur(24px);
-  }
-
-  .description div {
-    align-items: flex-end;
-    pointer-events: none;
-    inset: auto 0 0;
-    padding: 2rem;
-    height: 200px;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgb(var(--background-end-rgb)) 40%
-    );
-    z-index: 1;
-  }
-}
-
-/* Tablet and Smaller Desktop */
-@media (min-width: 701px) and (max-width: 1120px) {
-  .grid {
-    grid-template-columns: repeat(2, 50%);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .vercelLogo {
-    filter: invert(1);
-  }
-
-  .logo,
-  .thirteen img {
-    filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
-  }
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(360deg);
-  }
-  to {
-    transform: rotate(0deg);
+  100% {
+    transform: scale(1, 1);
   }
 }

@@ -1,9 +1,10 @@
+import { useState } from 'react'
 import Image from 'next/image'
 import styles from '@/styles/Home.module.css'
-import { useState, useEffect } from 'react'
 import rock from '@asset/assets/stone.png'
 import paper from '@asset/assets/paper.png'
 import scissor from '@asset/assets/scissor.png'
+import Firework from './Firework'
 import { Inter, Press_Start_2P } from '@next/font/google'
 const pressStart2P = Press_Start_2P({ subsets: ['latin'], weight: '400' })
 
@@ -113,6 +114,16 @@ const Home = () => {
           Play button
         </div> */}
         <PointBoard computerPoint={computerPoint} userPoint={userPoint} />
+        {computerPoint === 5 && (
+          <div>
+            <h1 className={styles.zoomInOutBox}>Computer Won</h1> <Firework />
+          </div>
+        )}
+        {userPoint === 5 && (
+          <div>
+            <h1 className={styles.zoomInOutBox}>User Won</h1> <Firework />
+          </div>
+        )}
       </main>
     </>
   )
