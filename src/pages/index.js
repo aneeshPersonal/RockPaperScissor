@@ -20,6 +20,7 @@ const PointBoard = ({ userPoint, computerPoint }) => {
     computer: computerPoint || 0,
     user: userPoint || 0
   }
+  console.log('userPoint')
   return (
     <div className={styles.pointBoardWrap}>
       <div className={styles.pointItem}>
